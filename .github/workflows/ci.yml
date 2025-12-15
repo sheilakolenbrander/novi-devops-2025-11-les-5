@@ -40,7 +40,6 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t ghcr.io/${{ github.repository }}:${{ github.sha }} .
-          docker tag ghcr.io/${{ github.repository }}:${{ github.sha }} ghcr.io/${{ github.repository }}:latest
 
       - name: Save image
         run: docker save ghcr.io/${{ github.repository }}:${{ github.sha }} > image.tar
@@ -70,3 +69,4 @@ jobs:
       - name: push image to GHCR
         run: |
           docker push ghcr.io/${{ github.repository }}:${{ github.sha }}
+          docker push ghcr.io/${{ github.repository }}:latest
